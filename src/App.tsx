@@ -6,6 +6,7 @@ import Map from "react-map-gl";
 import Controls from "./components/Controls";
 import HistogramAxis from "./components/HisogramAxis";
 import HistogramPicker from "./components/HistogramPicker";
+import InfoModal from "./components/InfoModal";
 import Legend from "./components/Legend";
 import PriceInput from "./components/PriceInput";
 import Search from "./components/Search";
@@ -23,6 +24,20 @@ const initialViewState = {
   bearing: -57.2,
 };
 
+interface Info {
+  address: string;
+  id: string;
+  area: string;
+  layerName: string;
+  price: number;
+  psqft: number;
+}
+
+export interface ModalInfo {
+  coordinates: [long: number, lat: number];
+  info: Info;
+}
+
 function App() {
   const [viewState, setViewState] = useState<any>(initialViewState);
   const mapStyle = {
@@ -36,6 +51,10 @@ function App() {
   const [isSettingsOpen, setSettingsOpen] = useState(false);
   const settingsRef = useRef<HTMLInputElement>(null);
   const svgRef = useRef();
+  const [modalInfo, setModalInfo] = useState<ModalInfo>();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClose = () => setIsOpen(false);
 
   const handleZoomOut = () => {
     setViewState({
@@ -78,13 +97,11 @@ function App() {
       autoHighlight: true,
       uniqueIdProperty: "id",
       onClick: (info: any) => {
-        alert(
-          JSON.stringify(
-            { coordinates: info.coordinate, info: info.object.properties },
-            null,
-            2
-          )
-        );
+        setModalInfo({
+          coordinates: info.coordinate,
+          info: info.object.properties,
+        });
+        setIsOpen(true);
       },
       updateTriggers: {
         getFillColor: { bins },
@@ -93,6 +110,11 @@ function App() {
   ];
   return (
     <div className="h-screen w-screen">
+      <InfoModal
+        modalInfo={modalInfo}
+        isOpen={isOpen}
+        handleClose={handleClose}
+      />
       <Legend
         target={target}
         range={range}
@@ -118,7 +140,6 @@ function App() {
       </Settings>
       <Search />
       <Controls handleZoomOut={handleZoomOut} />
-
       <DeckGL
         layers={layers as any}
         initialViewState={viewState}
