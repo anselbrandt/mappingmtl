@@ -1,0 +1,199 @@
+{
+  "type": "FeatureCollection",
+  "query": ["500", "sherbrook"],
+  "features": [
+    {
+      "id": "address.7686342972249470",
+      "type": "Feature",
+      "place_type": ["address"],
+      "relevance": 1,
+      "properties": { "accuracy": "rooftop" },
+      "text": "Rue Sherbrooke Ouest",
+      "place_name": "500 Rue Sherbrooke Ouest, Montréal, Quebec H3A3G6, Canada",
+      "center": [-73.572177, 45.506239],
+      "geometry": { "type": "Point", "coordinates": [-73.572177, 45.506239] },
+      "address": "500",
+      "context": [
+        {
+          "id": "neighborhood.8750971340350900",
+          "text": "Faubourg Saint-Laurent"
+        },
+        { "id": "postcode.7686342972249470", "text": "H3A3G6" },
+        {
+          "id": "place.5483383125149290",
+          "wikidata": "Q340",
+          "text": "Montréal"
+        },
+        {
+          "id": "region.10689774994470460",
+          "short_code": "CA-QC",
+          "wikidata": "Q176",
+          "text": "Quebec"
+        },
+        {
+          "id": "country.2057072853587150",
+          "wikidata": "Q16",
+          "short_code": "ca",
+          "text": "Canada"
+        }
+      ]
+    },
+    {
+      "id": "address.5640217883332464",
+      "type": "Feature",
+      "place_type": ["address"],
+      "relevance": 1,
+      "properties": { "accuracy": "rooftop" },
+      "text": "Rue Sherbrooke Est",
+      "place_name": "500 Rue Sherbrooke Est, Montréal, Quebec H2L1K1, Canada",
+      "center": [-73.566548, 45.518188],
+      "geometry": { "type": "Point", "coordinates": [-73.566548, 45.518188] },
+      "address": "500",
+      "context": [
+        {
+          "id": "neighborhood.8750971340350900",
+          "text": "Faubourg Saint-Laurent"
+        },
+        { "id": "postcode.5640217883332464", "text": "H2L1K1" },
+        {
+          "id": "place.5483383125149290",
+          "wikidata": "Q340",
+          "text": "Montréal"
+        },
+        {
+          "id": "region.10689774994470460",
+          "short_code": "CA-QC",
+          "wikidata": "Q176",
+          "text": "Quebec"
+        },
+        {
+          "id": "country.2057072853587150",
+          "wikidata": "Q16",
+          "short_code": "ca",
+          "text": "Canada"
+        }
+      ]
+    },
+    {
+      "id": "address.7455820324019940",
+      "type": "Feature",
+      "place_type": ["address"],
+      "relevance": 1,
+      "properties": { "accuracy": "rooftop" },
+      "text": "Sherbrooke Street",
+      "place_name": "500 Sherbrooke Street, Peterborough, Ontario K9J2P3, Canada",
+      "center": [-78.330181, 44.299607],
+      "geometry": { "type": "Point", "coordinates": [-78.330181, 44.299607] },
+      "address": "500",
+      "context": [
+        { "id": "neighborhood.4689004547668260", "text": "Peterborough Town" },
+        { "id": "postcode.7455820324019940", "text": "K9J2P3" },
+        {
+          "id": "place.7107414283087210",
+          "wikidata": "Q776930",
+          "text": "Peterborough"
+        },
+        {
+          "id": "district.8220098046702980",
+          "wikidata": "Q730542",
+          "text": "Peterborough County"
+        },
+        {
+          "id": "region.10598799396263190",
+          "short_code": "CA-ON",
+          "wikidata": "Q1904",
+          "text": "Ontario"
+        },
+        {
+          "id": "country.2057072853587150",
+          "wikidata": "Q16",
+          "short_code": "ca",
+          "text": "Canada"
+        }
+      ]
+    },
+    {
+      "id": "address.7930372113811224",
+      "type": "Feature",
+      "place_type": ["address"],
+      "relevance": 1,
+      "properties": { "accuracy": "interpolated" },
+      "text": "Sherbrooke Road",
+      "place_name": "500 Sherbrooke Road, East River St. Marys, Nova Scotia B2H5C8, Canada",
+      "center": [-62.158164, 45.388355],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-62.158164, 45.388355],
+        "interpolated": true
+      },
+      "address": "500",
+      "context": [
+        { "id": "postcode.7930372113811224", "text": "B2H5C8" },
+        {
+          "id": "place.10000134056783340",
+          "wikidata": "Q5329280",
+          "text": "East River St. Marys"
+        },
+        {
+          "id": "district.14486456859400620",
+          "wikidata": "Q2092485",
+          "text": "Pictou County"
+        },
+        {
+          "id": "region.9522000239638310",
+          "short_code": "CA-NS",
+          "wikidata": "Q1952",
+          "text": "Nova Scotia"
+        },
+        {
+          "id": "country.2057072853587150",
+          "wikidata": "Q16",
+          "short_code": "ca",
+          "text": "Canada"
+        }
+      ]
+    },
+    {
+      "id": "address.284690260479928",
+      "type": "Feature",
+      "place_type": ["address"],
+      "relevance": 1,
+      "properties": { "accuracy": "interpolated" },
+      "text": "Sherbrooke Lane",
+      "place_name": "500 Sherbrooke Lane, Lunenburg, Nova Scotia B0J2E0, Canada",
+      "center": [-64.554688, 44.624801],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-64.554688, 44.624801],
+        "interpolated": true
+      },
+      "address": "500",
+      "context": [
+        { "id": "postcode.284690260479928", "text": "B0J2E0" },
+        {
+          "id": "place.11359757222832450",
+          "wikidata": "Q105441",
+          "text": "Lunenburg"
+        },
+        {
+          "id": "district.13884332465508820",
+          "wikidata": "Q142312",
+          "text": "Lunenburg County"
+        },
+        {
+          "id": "region.9522000239638310",
+          "short_code": "CA-NS",
+          "wikidata": "Q1952",
+          "text": "Nova Scotia"
+        },
+        {
+          "id": "country.2057072853587150",
+          "wikidata": "Q16",
+          "short_code": "ca",
+          "text": "Canada"
+        }
+      ]
+    }
+  ],
+  "attribution": "NOTICE: © 2022 Mapbox and its suppliers. All rights reserved. Use of this data is subject to the Mapbox Terms of Service (https://www.mapbox.com/about/maps/). This response and the information it contains may not be retained. POI(s) provided by Foursquare."
+}

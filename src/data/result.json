@@ -1,0 +1,36 @@
+{
+  "id": "address.7686342972249470",
+  "type": "Feature",
+  "place_type": ["address"],
+  "relevance": 1,
+  "properties": { "accuracy": "rooftop" },
+  "text": "Rue Sherbrooke Ouest",
+  "place_name": "500 Rue Sherbrooke Ouest, Montréal, Quebec H3A3G6, Canada",
+  "center": [-73.572177, 45.506239],
+  "geometry": { "type": "Point", "coordinates": [-73.572177, 45.506239] },
+  "address": "500",
+  "context": [
+    {
+      "id": "neighborhood.8750971340350900",
+      "text": "Faubourg Saint-Laurent"
+    },
+    { "id": "postcode.7686342972249470", "text": "H3A3G6" },
+    {
+      "id": "place.5483383125149290",
+      "wikidata": "Q340",
+      "text": "Montréal"
+    },
+    {
+      "id": "region.10689774994470460",
+      "short_code": "CA-QC",
+      "wikidata": "Q176",
+      "text": "Quebec"
+    },
+    {
+      "id": "country.2057072853587150",
+      "wikidata": "Q16",
+      "short_code": "ca",
+      "text": "Canada"
+    }
+  ]
+}

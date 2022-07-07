@@ -3,6 +3,7 @@ import { MVTLayer } from "@deck.gl/geo-layers/typed";
 import DeckGL from "@deck.gl/react/typed";
 import { useRef, useState } from "react";
 import Map from "react-map-gl";
+import { useQuery, useQueryClient } from "react-query";
 import Controls from "./components/Controls";
 import HistogramAxis from "./components/HisogramAxis";
 import HistogramPicker from "./components/HistogramPicker";
@@ -13,6 +14,8 @@ import Search from "./components/Search";
 import Settings from "./components/Settings";
 import { data } from "./data/histogram";
 import { getRgb } from "./utils/colors";
+import { getResults, Result } from "./utils/geocoding";
+import useDebounce from "./utils/useDebounce";
 import { useGetBins } from "./utils/useGetBins";
 import useOnClickOutside from "./utils/useOnClickOutside";
 
@@ -39,6 +42,7 @@ export interface ModalInfo {
 }
 
 function App() {
+  const queryClient = useQueryClient();
   const [viewState, setViewState] = useState<any>(initialViewState);
   const mapStyle = {
     light: "mapbox://styles/mapbox/light-v10",
@@ -53,6 +57,49 @@ function App() {
   const svgRef = useRef();
   const [modalInfo, setModalInfo] = useState<ModalInfo>();
   const [isOpen, setIsOpen] = useState(false);
+  const [inputValue, setInputValue] = useState<string>();
+  const debouncedSearchParams = useDebounce(inputValue, 300);
+  const { data: results, isLoading } = useQuery(
+    ["addresses", debouncedSearchParams],
+    () =>
+      getResults({
+        search: debouncedSearchParams,
+        token: import.meta.env.VITE_MAPBOX_ACCESS_TOKEN,
+      }),
+    { enabled: Boolean(debouncedSearchParams) }
+  );
+  const [showResutls, setShowResults] = useState(false);
+
+  const handleShowResults = () => {
+    setShowResults(true);
+  };
+
+  const handleHideResults = () => {
+    setShowResults(false);
+  };
+
+  const handleOnChange = (event: React.FormEvent<HTMLInputElement>) => {
+    const queryString = event.currentTarget.value;
+    setInputValue(queryString);
+  };
+
+  const handleOnSelected = (result: Result) => {
+    setShowResults(false);
+    const [long, lat] = result.center;
+    const newViewState = {
+      longitude: long,
+      latitude: lat,
+      zoom: 20,
+      pitch: 0,
+      bearing: -57.2,
+    };
+
+    setViewState({
+      ...newViewState,
+      transitionDuration: 2000,
+      transitionInterpolator: new FlyToInterpolator(),
+    });
+  };
 
   const handleClose = () => setIsOpen(false);
 
@@ -138,7 +185,15 @@ function App() {
         />
         <HistogramAxis values={["$0", "$300K", "$600K", "$900K", "$1.2M"]} />
       </Settings>
-      <Search />
+      <Search
+        results={results}
+        handleOnChange={handleOnChange}
+        handleHideResults={handleHideResults}
+        handleShowResults={handleShowResults}
+        showResults={showResutls}
+        handleOnSelected={handleOnSelected}
+        inputValue={inputValue}
+      />
       <Controls handleZoomOut={handleZoomOut} />
       <DeckGL
         layers={layers as any}
