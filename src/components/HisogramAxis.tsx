@@ -1,11 +1,13 @@
-const HistogramAxis = () => {
+interface HisogramAxisProps {
+  values: string[];
+}
+
+const HistogramAxis: React.FC<HisogramAxisProps> = ({ values }) => {
   return (
     <div className="flex justify-between">
-      <div>$0</div>
-      <div>#300K</div>
-      <div>$600K</div>
-      <div>$900K</div>
-      <div>$1.2 M</div>
+      {values.map((value, index) => (
+        <div key={index}>{value}</div>
+      ))}
     </div>
   );
 };

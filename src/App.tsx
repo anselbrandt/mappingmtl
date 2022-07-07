@@ -114,7 +114,7 @@ function App() {
           handleUpdatePrice={handleUpdatePrice}
           handleUpdateTarget={handleUpdateTarget}
         />
-        <HistogramAxis />
+        <HistogramAxis values={["$0", "$300K", "$600K", "$900K", "$1.2M"]} />
       </Settings>
       <Search />
       <Controls handleZoomOut={handleZoomOut} />
