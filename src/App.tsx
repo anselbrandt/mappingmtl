@@ -4,6 +4,7 @@ import DeckGL from "@deck.gl/react/typed";
 import { useRef, useState } from "react";
 import Map from "react-map-gl";
 import Controls from "./components/Controls";
+import HistogramAxis from "./components/HisogramAxis";
 import HistogramPicker from "./components/HistogramPicker";
 import Legend from "./components/Legend";
 import PriceInput from "./components/PriceInput";
@@ -113,13 +114,7 @@ function App() {
           handleUpdatePrice={handleUpdatePrice}
           handleUpdateTarget={handleUpdateTarget}
         />
-        <div className="flex justify-between">
-          <div>$0</div>
-          <div>#300K</div>
-          <div>$600K</div>
-          <div>$900K</div>
-          <div>$1.2 M</div>
-        </div>
+        <HistogramAxis />
       </Settings>
       <Search />
       <Controls handleZoomOut={handleZoomOut} />
