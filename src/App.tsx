@@ -200,8 +200,8 @@ function App() {
         <PriceInput target={target} handleSetTarget={handleSetTarget} />
         <HistogramPicker
           svgRef={svgRef}
-          width={600}
-          height={400}
+          width={232}
+          height={118}
           data={data}
           color="#475569"
           highlightColor="coral"

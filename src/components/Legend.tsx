@@ -14,15 +14,15 @@ const Legend: React.FC<LegendProps> = ({
 }) => {
   const { bins } = useGetBins({ target, range });
   return (
-    <div className="absolute z-10 top-0 left-0 p-2 m-4 rounded-lg text-center bg-slate-500 text-white">
-      <div className="m-2">Assessments</div>
+    <div className="absolute z-10 bottom-0 left-0 p-1 m-2 rounded-lg text-center bg-slate-500 text-white text-sm">
+      <div className="m-1">Assessments</div>
       <div className="flex">
-        <div className="flex-col h-full">
+        <div className="flex-col mt-1 h-full">
           {colorNames.map((name, index) => {
             return (
               <div
                 key={index}
-                className="m-2 w-5 h-5"
+                className="m-1 w-4 h-4"
                 style={{ background: colors[name] }}
               >
                 {""}
@@ -30,13 +30,13 @@ const Legend: React.FC<LegendProps> = ({
             );
           })}
         </div>
-        <div className="mt-4 flex-col justify-center">
+        <div className="flex-col justify-center">
           {bins.map((value, index) =>
             index !== bins.length - 1 ? (
               <div className="m-1 text-gray-300" key={index}>
                 {index === 3 ? (
                   <div
-                    className="flex ml-4 border-b border-slate-500 hover:border-gray-300 hover:cursor-pointer"
+                    className="flex border-b border-slate-500 hover:border-gray-300 hover:cursor-pointer"
                     onClick={() => handleSetSettingsOpen()}
                   >
                     ${(+(value / 1000).toFixed(0)).toLocaleString()}k

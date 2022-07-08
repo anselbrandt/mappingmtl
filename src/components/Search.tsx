@@ -27,7 +27,7 @@ const Search: React.FC<SearchProps> = ({
   return (
     <div
       ref={ref}
-      className="absolute z-10 top-0 left-1/4 w-auto p-2 m-4 rounded-lg"
+      className="absolute z-10 top-0 left-0 w-auto p-2 m-2 rounded-lg"
     >
       <div>
         <input
