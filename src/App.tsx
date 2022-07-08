@@ -5,6 +5,7 @@ import DeckGL from "@deck.gl/react/typed";
 import { useRef, useState } from "react";
 import Map from "react-map-gl";
 import { useQuery, useQueryClient } from "react-query";
+import About from "./components/About";
 import Controls from "./components/Controls";
 import HistogramAxis from "./components/HisogramAxis";
 import HistogramPicker from "./components/HistogramPicker";
@@ -214,6 +215,7 @@ function App() {
         />
         <HistogramAxis values={["$0", "$300K", "$600K", "$900K", "$1.2M"]} />
       </Settings>
+      <About />
       <Search
         results={results}
         handleOnChange={handleOnChange}
