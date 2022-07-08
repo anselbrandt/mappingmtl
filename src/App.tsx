@@ -1,5 +1,6 @@
 import { FlyToInterpolator } from "@deck.gl/core/typed";
 import { MVTLayer } from "@deck.gl/geo-layers/typed";
+import { IconLayer } from "@deck.gl/layers/typed";
 import DeckGL from "@deck.gl/react/typed";
 import { useRef, useState } from "react";
 import Map from "react-map-gl";
@@ -18,6 +19,10 @@ import { getResults, Result } from "./utils/geocoding";
 import useDebounce from "./utils/useDebounce";
 import { useGetBins } from "./utils/useGetBins";
 import useOnClickOutside from "./utils/useOnClickOutside";
+
+const ICON_MAPPING = {
+  marker: { x: 0, y: 0, width: 128, height: 128, mask: true },
+};
 
 const initialViewState = {
   longitude: -73.645,
@@ -69,6 +74,7 @@ function App() {
     { enabled: Boolean(debouncedSearchParams) }
   );
   const [showResutls, setShowResults] = useState(false);
+  const [searchResult, setSearchResult] = useState<any[]>([]);
 
   const handleShowResults = () => {
     setShowResults(true);
@@ -81,10 +87,18 @@ function App() {
   const handleOnChange = (event: React.FormEvent<HTMLInputElement>) => {
     const queryString = event.currentTarget.value;
     setInputValue(queryString);
+    if (queryString === "") {
+      setSearchResult([]);
+    }
   };
 
   const handleOnSelected = (result: Result) => {
     setShowResults(false);
+    setSearchResult([
+      {
+        coordinates: result.center,
+      },
+    ]);
     const [long, lat] = result.center;
     const newViewState = {
       longitude: long,
@@ -153,7 +167,22 @@ function App() {
       updateTriggers: {
         getFillColor: { bins },
       },
-    } as any),
+    }),
+    new IconLayer({
+      id: "icon-layer",
+      data: searchResult,
+      pickable: true,
+      // iconAtlas and iconMapping are required
+      // getIcon: return a string
+      iconAtlas:
+        "https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png",
+      iconMapping: ICON_MAPPING,
+      getIcon: () => "marker",
+      sizeScale: 15,
+      getPosition: (d: any) => d.coordinates,
+      getSize: () => 6,
+      getColor: () => [255, 99, 71],
+    }),
   ];
   return (
     <div className="h-screen w-screen">
