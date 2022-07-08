@@ -27,14 +27,16 @@ const Search: React.FC<SearchProps> = ({
   return (
     <div
       ref={ref}
-      className="absolute z-10 top-0 left-1/2 p-2 m-4 rounded-lg text-center"
+      className="absolute z-10 top-0 left-1/4 w-auto p-2 m-4 rounded-lg"
     >
-      <input
-        onChange={handleOnChange}
-        onFocus={handleShowResults}
-        value={inputValue}
-        placeholder="search"
-      />
+      <div>
+        <input
+          onChange={handleOnChange}
+          onFocus={handleShowResults}
+          value={inputValue}
+          placeholder="search"
+        />
+      </div>
       <div className="bg-white">
         {showResults &&
           results &&
