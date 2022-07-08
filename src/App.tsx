@@ -62,7 +62,7 @@ function App() {
   const svgRef = useRef();
   const [modalInfo, setModalInfo] = useState<ModalInfo>();
   const [isOpen, setIsOpen] = useState(false);
-  const [inputValue, setInputValue] = useState<string>();
+  const [inputValue, setInputValue] = useState<string>("");
   const debouncedSearchParams = useDebounce(inputValue, 300);
   const { data: results, isLoading } = useQuery(
     ["addresses", debouncedSearchParams],
